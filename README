@@ -1,0 +1,23 @@
+# Stoica Theodor Nicolae
+Am ales sa folosesc urmatoarele structuri de date pentru marketplace:
+	-pentru a tine minte producatorii si produsele pe care le publica
+am utilizat un dictionar
+	-pentru a tine minte cosurile de cumparaturi si produsele din ele am
+folosit alt dictionar
+	-pentru a tine minte id-ul producatorului in caz de remove, am folosit un al
+3 dictionar
+	Astfel, cand un producator se inregistreaza, acesta primeste un ID unic, pe care il extrag
+dintr-o lista de iduri initializata de la 0 la 1000.Parcurg lista de produse si adaug in
+marketplace produsele in cantitatea specificata(adaug in dictionarul prod_dict). In cazul
+in care am prea multe produse pentru producatorul curent, voi astepta un timp specificat si
+voi incerca din nou. 
+	Cand un client cere un id pentru un nou cos de cumparaturi, se apeleaza metoda get_new_cart
+care returneaza un numar intre 0 si 1000. Pentru fiecare cos de cumparaturi, se parcurge lista de 
+operatii; in cazul in care avem operatia "add", punem produsul in dictionarul pentru carturi. Daca
+acesta nu este disponibil, vom astepta din nou un anumit timp. In cazul in care avem operatia "remove"
+va trebui sa ne folosim de cel de-al 3-lea dictionar pentru a identifica id-ul producatorului sau pentru
+a il adauga din nou in dictionarul cu produse.
+	La finalul operatiilor se va apela metoda place_order care returneaza o lista cu produsele existente
+in cosul de cumparaturi. Se parcurge lista si se va afisa fiecare produs.
+	Nu am folosit metode de sincronizare clasice, intrucat operatiile pe liste si dictionare sunt thread-safe.
+
